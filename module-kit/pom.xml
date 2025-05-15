@@ -35,7 +35,6 @@
             <goals>
               <goal>nbm</goal>
               <goal>cluster</goal>
-              <goal>autoupdate</goal>
             </goals>
           </execution>
         </executions>
