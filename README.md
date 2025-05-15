@@ -15,5 +15,6 @@ modules.
 `[DEBUG] FileSet: Setup scanner in dir C:\Users\marco\IdeaProjects\cluster-example\module-kit\target\nbm\clusters with patternSet{ includes: [**] excludes: [] }
 [INFO] Copying 3 files to C:\Users\marco\IdeaProjects\cluster-example\module-kit\target\netbeans_clusters`
 
-This is repeated four times with versions >4.6. For each module one execution is performed, including the parent. With
-version 4.5 it is executed 3 times only and only for the modules, module-kit, module-a and module-b. 
+This is repeated four times for the same source directory with versions >4.6. For each module one execution is
+performed, including the parent. With version 4.5 it is executed 3 times only and only for the modules, module-kit,
+module-a and module-b.  
