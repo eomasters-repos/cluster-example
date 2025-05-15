@@ -1,0 +1,5 @@
+# Project exclude paths
+/module-a/target/
+/module-b/target/
+/module-kit/target/
+/.idea/

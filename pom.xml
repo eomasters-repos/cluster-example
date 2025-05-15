@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <name>Cluster Example</name>
+  <description>Example to demonstrate issue with nbm:cluster</description>
+  <groupId>org.example</groupId>
+  <artifactId>cluster-example</artifactId>
+  <version>1.0</version>
+  <packaging>pom</packaging>
+
+  <modules>
+    <module>module-kit</module>
+    <module>module-a</module>
+    <module>module-b</module>
+  </modules>
+
+
+  <properties>
+    <main.basedir>${project.basedir}</main.basedir>
+    <netbeans.version>RELEASE210</netbeans.version>
+    <jdk.version>11</jdk.version>
+    <javahelp.version>2.0.05</javahelp.version>
+    <maven.compiler.release>${jdk.version}</maven.compiler.release>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <child.project.url.inherit.append.path>false</child.project.url.inherit.append.path>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.example</groupId>
+        <artifactId>module-a</artifactId>
+        <version>1.0</version>
+      </dependency>
+      <dependency>
+        <groupId>org.example</groupId>
+        <artifactId>module-b</artifactId>
+        <version>1.0</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.14.0</version>
+        </plugin>
+        <plugin>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>3.4.2</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.netbeans.utilities</groupId>
+          <artifactId>nbm-maven-plugin</artifactId>
+          <version>4.5</version>
+          <extensions>true</extensions>
+          <dependencies>
+            <dependency>
+              <groupId>javax.help</groupId>
+              <artifactId>javahelp</artifactId>
+              <version>${javahelp.version}</version>
+            </dependency>
+          </dependencies>
+          <configuration>
+            <moduleType>normal</moduleType>
+            <cluster>mycluster</cluster>
+            <useOSGiDependencies>false</useOSGiDependencies>
+            <requiresRestart>true</requiresRestart>
+            <sourceManifestFile>${project.basedir}/src/nbm/manifest.mf</sourceManifestFile>
+          </configuration>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <debug>true</debug>
+        </configuration>
+      </plugin>
+      <plugin>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifestFile>${project.build.directory}/classes/META-INF/MANIFEST.MF</manifestFile>
+          </archive>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
