@@ -18,3 +18,5 @@ modules.
 This is repeated four times for the same source directory with versions >4.6. For each module one execution is
 performed, including the parent. With version 4.5 it is executed 3 times only and only for the modules, module-kit,
 module-a and module-b. 
+
+I have reported this to the dev team: https://github.com/apache/netbeans-mavenutils-nbm-maven-plugin/issues/236
